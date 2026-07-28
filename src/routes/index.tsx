@@ -50,6 +50,18 @@ function Dashboard() {
   const recent = certificates.filter((c) => c.changedSinceLastVisit);
   const year = currentAcademicYear(STUDENT.admissionYear);
 
+  const counts = certificates.reduce(
+    (acc, c) => {
+      acc.total += 1;
+      acc[c.status] += 1;
+      return acc;
+    },
+    { total: 0, auto_approved: 0, reviewed: 0, flagged: 0, rejected: 0, pending: 0 }
+  );
+
+  const latest = [...certificates].sort((a, b) => b.submittedOn.localeCompare(a.submittedOn)).slice(0, 5);
+
+
   return (
     <AppLayout
       title={`Hello, ${STUDENT.name.split(" ")[0]}`}
