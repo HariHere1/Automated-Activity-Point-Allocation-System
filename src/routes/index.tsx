@@ -18,12 +18,11 @@ import { cn } from "@/lib/utils";
 import {
   CATEGORIES,
   REQUIRED_POINTS,
-  STATUS_LABELS,
   STUDENT,
   activityLabel,
   currentAcademicYear,
-  type CertificateStatus,
 } from "@/lib/ktu-data";
+
 
 
 
