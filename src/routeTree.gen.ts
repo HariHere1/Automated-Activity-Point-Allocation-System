@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as UploadRouteImport } from './routes/upload'
 import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ResubmitIdRouteImport } from './routes/resubmit.$id'
 
 const UploadRoute = UploadRouteImport.update({
   id: '/upload',
@@ -28,35 +29,44 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ResubmitIdRoute = ResubmitIdRouteImport.update({
+  id: '/resubmit/$id',
+  path: '/resubmit/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
   '/upload': typeof UploadRoute
+  '/resubmit/$id': typeof ResubmitIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
   '/upload': typeof UploadRoute
+  '/resubmit/$id': typeof ResubmitIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
   '/upload': typeof UploadRoute
+  '/resubmit/$id': typeof ResubmitIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/certificates' | '/upload'
+  fullPaths: '/' | '/certificates' | '/upload' | '/resubmit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/certificates' | '/upload'
-  id: '__root__' | '/' | '/certificates' | '/upload'
+  to: '/' | '/certificates' | '/upload' | '/resubmit/$id'
+  id: '__root__' | '/' | '/certificates' | '/upload' | '/resubmit/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CertificatesRoute: typeof CertificatesRoute
   UploadRoute: typeof UploadRoute
+  ResubmitIdRoute: typeof ResubmitIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -82,6 +92,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/resubmit/$id': {
+      id: '/resubmit/$id'
+      path: '/resubmit/$id'
+      fullPath: '/resubmit/$id'
+      preLoaderRoute: typeof ResubmitIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -89,6 +106,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CertificatesRoute: CertificatesRoute,
   UploadRoute: UploadRoute,
+  ResubmitIdRoute: ResubmitIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
