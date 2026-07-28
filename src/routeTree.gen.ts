@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UploadRouteImport } from './routes/upload'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as CertificatesRouteImport } from './routes/certificates'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ResubmitIdRouteImport } from './routes/resubmit.$id'
@@ -23,6 +24,11 @@ const UploadRoute = UploadRouteImport.update({
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProfileRoute = ProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CertificatesRoute = CertificatesRouteImport.update({
@@ -44,6 +50,7 @@ const ResubmitIdRoute = ResubmitIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
@@ -59,19 +67,33 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/certificates': typeof CertificatesRoute
+  '/profile': typeof ProfileRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/certificates' | '/rules' | '/upload' | '/resubmit/$id'
+  fullPaths:
+    | '/'
+    | '/certificates'
+    | '/profile'
+    | '/rules'
+    | '/upload'
+    | '/resubmit/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/certificates' | '/rules' | '/upload' | '/resubmit/$id'
+  to:
+    | '/'
+    | '/certificates'
+    | '/profile'
+    | '/rules'
+    | '/upload'
+    | '/resubmit/$id'
   id:
     | '__root__'
     | '/'
     | '/certificates'
+    | '/profile'
     | '/rules'
     | '/upload'
     | '/resubmit/$id'
@@ -80,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CertificatesRoute: typeof CertificatesRoute
+  ProfileRoute: typeof ProfileRoute
   RulesRoute: typeof RulesRoute
   UploadRoute: typeof UploadRoute
   ResubmitIdRoute: typeof ResubmitIdRoute
@@ -99,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/profile': {
+      id: '/profile'
+      path: '/profile'
+      fullPath: '/profile'
+      preLoaderRoute: typeof ProfileRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/certificates': {
@@ -128,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CertificatesRoute: CertificatesRoute,
+  ProfileRoute: ProfileRoute,
   RulesRoute: RulesRoute,
   UploadRoute: UploadRoute,
   ResubmitIdRoute: ResubmitIdRoute,
