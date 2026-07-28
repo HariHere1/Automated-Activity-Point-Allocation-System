@@ -82,7 +82,7 @@ function CertificatesPage() {
                   <td className="px-5 py-4">
                     {needsFix && (
                       <Link
-                        to="/certificates/$id/edit"
+                        to="/resubmit/$id"
                         params={{ id: c.id }}
                         className="inline-flex items-center gap-1.5 rounded-lg border border-border px-2.5 py-1.5 text-xs font-medium transition-colors hover:bg-accent"
                       >
