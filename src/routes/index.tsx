@@ -14,6 +14,7 @@ import {
 import { AppLayout, GlassCard } from "@/components/AppLayout";
 import { StatusBadge } from "@/components/StatusBadge";
 import { usePortal } from "@/lib/portal-store";
+import { cn } from "@/lib/utils";
 import {
   CATEGORIES,
   REQUIRED_POINTS,
@@ -23,6 +24,7 @@ import {
   currentAcademicYear,
   type CertificateStatus,
 } from "@/lib/ktu-data";
+
 
 
 export const Route = createFileRoute("/")({
