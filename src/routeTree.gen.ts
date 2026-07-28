@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UploadRouteImport } from './routes/upload'
 import { Route as RulesRouteImport } from './routes/rules'
+import { Route as RegisterRouteImport } from './routes/register'
 import { Route as ProfileRouteImport } from './routes/profile'
 import { Route as LoginRouteImport } from './routes/login'
 import { Route as CertificatesRouteImport } from './routes/certificates'
@@ -25,6 +26,11 @@ const UploadRoute = UploadRouteImport.update({
 const RulesRoute = RulesRouteImport.update({
   id: '/rules',
   path: '/rules',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const RegisterRoute = RegisterRouteImport.update({
+  id: '/register',
+  path: '/register',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ProfileRoute = ProfileRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/certificates': typeof CertificatesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/certificates': typeof CertificatesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/certificates': typeof CertificatesRoute
   '/login': typeof LoginRoute
   '/profile': typeof ProfileRoute
+  '/register': typeof RegisterRoute
   '/rules': typeof RulesRoute
   '/upload': typeof UploadRoute
   '/resubmit/$id': typeof ResubmitIdRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/login'
     | '/profile'
+    | '/register'
     | '/rules'
     | '/upload'
     | '/resubmit/$id'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/login'
     | '/profile'
+    | '/register'
     | '/rules'
     | '/upload'
     | '/resubmit/$id'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/certificates'
     | '/login'
     | '/profile'
+    | '/register'
     | '/rules'
     | '/upload'
     | '/resubmit/$id'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   CertificatesRoute: typeof CertificatesRoute
   LoginRoute: typeof LoginRoute
   ProfileRoute: typeof ProfileRoute
+  RegisterRoute: typeof RegisterRoute
   RulesRoute: typeof RulesRoute
   UploadRoute: typeof UploadRoute
   ResubmitIdRoute: typeof ResubmitIdRoute
@@ -135,6 +148,13 @@ declare module '@tanstack/react-router' {
       path: '/rules'
       fullPath: '/rules'
       preLoaderRoute: typeof RulesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/register': {
+      id: '/register'
+      path: '/register'
+      fullPath: '/register'
+      preLoaderRoute: typeof RegisterRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/profile': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   CertificatesRoute: CertificatesRoute,
   LoginRoute: LoginRoute,
   ProfileRoute: ProfileRoute,
+  RegisterRoute: RegisterRoute,
   RulesRoute: RulesRoute,
   UploadRoute: UploadRoute,
   ResubmitIdRoute: ResubmitIdRoute,
