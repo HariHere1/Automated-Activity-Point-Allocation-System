@@ -1,15 +1,29 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowUpRight, Clock } from "lucide-react";
+import {
+  ArrowUpRight,
+  Clock,
+  FilePlus,
+  Files,
+  BookOpen,
+  TrendingUp,
+  CheckCircle2,
+  AlertCircle,
+  XCircle,
+  FileText,
+} from "lucide-react";
 import { AppLayout, GlassCard } from "@/components/AppLayout";
 import { StatusBadge } from "@/components/StatusBadge";
 import { usePortal } from "@/lib/portal-store";
 import {
   CATEGORIES,
   REQUIRED_POINTS,
+  STATUS_LABELS,
   STUDENT,
   activityLabel,
   currentAcademicYear,
+  type CertificateStatus,
 } from "@/lib/ktu-data";
+
 
 export const Route = createFileRoute("/")({
   head: () => ({
