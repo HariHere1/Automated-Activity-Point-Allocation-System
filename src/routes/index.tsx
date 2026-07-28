@@ -147,9 +147,150 @@ function Dashboard() {
           );
         })}
       </div>
+
+      <h2 className="mt-8 mb-3 text-sm font-semibold">At a glance</h2>
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <StatCard label="Total submissions" value={counts.total} icon={<FileText className="size-4" />} />
+        <StatCard
+          label="Approved"
+          value={counts.auto_approved + counts.reviewed}
+          icon={<CheckCircle2 className="size-4 text-emerald-600" />}
+          tone="emerald"
+        />
+        <StatCard
+          label="Under review / pending"
+          value={counts.pending + counts.flagged}
+          icon={<AlertCircle className="size-4 text-amber-600" />}
+          tone="amber"
+        />
+        <StatCard
+          label="Rejected"
+          value={counts.rejected}
+          icon={<XCircle className="size-4 text-rose-600" />}
+          tone="rose"
+        />
+      </div>
+
+      <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_1.3fr]">
+        <section className="space-y-3">
+          <h2 className="text-sm font-semibold">Quick actions</h2>
+          <div className="grid gap-3">
+            <ActionCard
+              to="/upload"
+              icon={<FilePlus className="size-5" />}
+              title="Upload a certificate"
+              description="Submit a new activity for points review."
+            />
+            <ActionCard
+              to="/certificates"
+              icon={<Files className="size-5" />}
+              title="My certificates"
+              description="Track status, edit drafts and resubmit flagged ones."
+            />
+            <ActionCard
+              to="/rules"
+              icon={<BookOpen className="size-5" />}
+              title="Points guide"
+              description="Check values and caps before uploading."
+            />
+          </div>
+        </section>
+
+        <GlassCard className="space-y-3">
+          <div className="flex items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="size-4 text-muted-foreground" />
+              <h2 className="text-sm font-semibold">Recent submissions</h2>
+            </div>
+            <Link to="/certificates" className="text-xs font-medium text-primary hover:underline">
+              View all
+            </Link>
+          </div>
+          {latest.length === 0 ? (
+            <p className="text-sm text-muted-foreground">No submissions yet.</p>
+          ) : (
+            <ul className="space-y-2">
+              {latest.map((c) => (
+                <li
+                  key={c.id}
+                  className="flex items-center justify-between gap-3 rounded-xl border border-border/60 bg-background/40 px-3 py-2.5"
+                >
+                  <div className="min-w-0 flex-1">
+                    <p className="truncate text-sm font-medium">{activityLabel(c)}</p>
+                    <p className="text-xs text-muted-foreground">
+                      {c.points} pts · {c.academicYear} · {c.submittedOn}
+                    </p>
+                  </div>
+                  <StatusBadge status={c.status} />
+                </li>
+              ))}
+            </ul>
+          )}
+        </GlassCard>
+      </div>
     </AppLayout>
   );
 }
+
+function StatCard({
+  label,
+  value,
+  icon,
+  tone,
+}: {
+  label: string;
+  value: number;
+  icon: React.ReactNode;
+  tone?: "emerald" | "amber" | "rose";
+}) {
+  const toneClass =
+    tone === "emerald"
+      ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400"
+      : tone === "amber"
+        ? "bg-amber-500/10 text-amber-700 dark:text-amber-400"
+        : tone === "rose"
+          ? "bg-rose-500/10 text-rose-700 dark:text-rose-400"
+          : "bg-muted text-muted-foreground";
+
+  return (
+    <GlassCard className="flex items-center gap-4">
+      <span className={cn("flex size-10 shrink-0 items-center justify-center rounded-xl", toneClass)}>{icon}</span>
+      <div>
+        <p className="text-2xl font-semibold">{value}</p>
+        <p className="text-xs text-muted-foreground">{label}</p>
+      </div>
+    </GlassCard>
+  );
+}
+
+function ActionCard({
+  to,
+  icon,
+  title,
+  description,
+}: {
+  to: string;
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}) {
+  return (
+    <Link
+      to={to}
+      className="group flex items-center gap-4 rounded-2xl border border-border/60 bg-background/40 p-4 transition-colors hover:bg-accent/40"
+    >
+      <span className="flex size-10 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors group-hover:bg-primary group-hover:text-primary-foreground">
+        {icon}
+      </span>
+      <div className="min-w-0 flex-1">
+        <p className="text-sm font-semibold">{title}</p>
+        <p className="text-xs text-muted-foreground">{description}</p>
+      </div>
+      <ArrowUpRight className="size-4 text-muted-foreground transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+    </Link>
+  );
+}
+
 
 function ProgressRing({ value, earned }: { value: number; earned: number }) {
   const r = 52;
