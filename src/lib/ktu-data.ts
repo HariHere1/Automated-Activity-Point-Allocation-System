@@ -241,14 +241,14 @@ export const MOCK_CERTIFICATES: Certificate[] = [
 ];
 
 export const STUDENT = {
-  name: "Aparna Menon",
-  rollNo: "TKM22CS041",
-  email: "aparna.menon@college.ac.in",
+  name: "Harigovind",
+  rollNo: "SJC20EC039",
+  email: "hari@college.ac.in",
   branch: "Computer Science & Engineering",
   batch: "2022–2026",
   admissionYear: 2022,
-  phone: "+91 98470 11234",
-  altEmail: "aparna.menon.dev@gmail.com",
+  phone: "+91 1234566780",
+  altEmail: "hari.govind.dev@gmail.com",
 };
 
 export function currentAcademicYear(admissionYear: number) {
