@@ -28,7 +28,7 @@ export function AppLayout({
   return (
     <div className="min-h-screen page-wash">
       <header className="sticky top-0 z-30 glass-soft">
-        <div className="mx-auto flex min-h-[64px] max-w-6xl items-center gap-3 px-4 py-3 sm:min-h-[72px] sm:gap-5 sm:px-6 sm:py-4">
+        <div className="mx-auto flex min-h-[64px] w-full max-w-[1720px] items-center gap-3 px-4 py-3 sm:min-h-[72px] sm:gap-5 sm:px-8 sm:py-4 lg:px-12">
           <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
             <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm sm:size-11">
               <GraduationCap className="size-5" />
