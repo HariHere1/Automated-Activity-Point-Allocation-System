@@ -56,18 +56,18 @@ export function AppLayout({
             ))}
           </nav>
 
-          <div className="ml-auto flex items-center gap-3">
+          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={toggle}
               aria-label="Toggle dark mode"
-              className="flex size-10 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
             >
               {theme === "dark" ? <Sun className="size-5" /> : <Moon className="size-5" />}
             </button>
             <Link
               to="/login"
-              className="hidden rounded-md px-4 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+              className="hidden rounded-md px-4 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground md:inline-flex"
             >
               Sign out
             </Link>
@@ -75,11 +75,12 @@ export function AppLayout({
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
-              className="flex size-10 items-center justify-center rounded-lg border border-border/70 text-muted-foreground md:hidden"
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-muted-foreground md:hidden"
             >
               <Menu className="size-5" />
             </button>
           </div>
+
         </div>
 
         {open && (
