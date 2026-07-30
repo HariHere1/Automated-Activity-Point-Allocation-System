@@ -66,7 +66,7 @@ export function CertificateForm({
 
   return (
     <form
-      className="grid gap-5 lg:grid-cols-[1.35fr_1fr] lg:items-start"
+      className="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-[minmax(0,1.35fr)_minmax(0,1fr)] lg:items-start"
       onSubmit={(e) => {
         e.preventDefault();
         if (!valid) return;

@@ -12,7 +12,9 @@ import {
   FileText,
 } from "lucide-react";
 import { AppLayout, GlassCard } from "@/components/AppLayout";
+import { EventsPanel } from "@/components/EventsPanel";
 import { StatusBadge } from "@/components/StatusBadge";
+
 import { usePortal } from "@/lib/portal-store";
 import { cn } from "@/lib/utils";
 import {
@@ -68,8 +70,11 @@ function Dashboard() {
       title={`Hello, ${STUDENT.name.split(" ")[0]}`}
       subtitle={`Year ${year} · ${STUDENT.branch} · Batch ${STUDENT.batch}`}
     >
-      <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr]">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 xl:grid-cols-[minmax(0,1fr)_330px]">
+        <div className="min-w-0">
+      <div className="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <GlassCard className="flex flex-col gap-6 sm:flex-row sm:items-center">
+
           <ProgressRing value={pct} earned={earnedPoints} />
           <div className="space-y-3">
             <p className="text-lg font-semibold">
@@ -172,7 +177,7 @@ function Dashboard() {
         />
       </div>
 
-      <div className="mt-8 grid gap-5 lg:grid-cols-[1fr_1.3fr]">
+      <div className="mt-8 grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.3fr)]">
         <section className="space-y-3">
           <h2 className="text-sm font-semibold">Quick actions</h2>
           <div className="grid gap-3">
@@ -229,7 +234,14 @@ function Dashboard() {
           )}
         </GlassCard>
       </div>
+        </div>
+
+        <div className="min-w-0 xl:sticky xl:top-24">
+          <EventsPanel />
+        </div>
+      </div>
     </AppLayout>
+
   );
 }
 

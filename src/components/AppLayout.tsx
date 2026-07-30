@@ -28,18 +28,19 @@ export function AppLayout({
   return (
     <div className="min-h-screen page-wash">
       <header className="sticky top-0 z-30 glass-soft">
-        <div className="mx-auto flex min-h-[72px] max-w-6xl items-center gap-5 px-4 py-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="flex size-11 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+        <div className="mx-auto flex min-h-[64px] max-w-6xl items-center gap-3 px-4 py-3 sm:min-h-[72px] sm:gap-5 sm:px-6 sm:py-4">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm sm:size-11">
               <GraduationCap className="size-5" />
             </span>
-            <span className="font-display text-lg font-semibold leading-tight tracking-tight">
-              Activity Points
-              <span className="block text-xs font-medium text-muted-foreground">
+            <span className="min-w-0 font-display text-base font-semibold leading-tight tracking-tight sm:text-lg">
+              <span className="block truncate">Activity Points</span>
+              <span className="block truncate text-xs font-medium text-muted-foreground">
                 KTU · {STUDENT.rollNo}
               </span>
             </span>
           </Link>
+
 
           <nav className="ml-8 hidden items-center gap-1 md:flex">
             {NAV.map((item) => (
@@ -55,18 +56,18 @@ export function AppLayout({
             ))}
           </nav>
 
-          <div className="ml-auto flex items-center gap-3">
+          <div className="ml-auto flex shrink-0 items-center gap-2 sm:gap-3">
             <button
               type="button"
               onClick={toggle}
               aria-label="Toggle dark mode"
-              className="flex size-10 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-muted-foreground transition-colors hover:bg-accent hover:text-accent-foreground"
             >
               {theme === "dark" ? <Sun className="size-5" /> : <Moon className="size-5" />}
             </button>
             <Link
               to="/login"
-              className="hidden rounded-md px-4 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground sm:inline-flex"
+              className="hidden rounded-md px-4 py-2 text-[15px] font-medium text-muted-foreground transition-colors hover:text-foreground md:inline-flex"
             >
               Sign out
             </Link>
@@ -74,11 +75,12 @@ export function AppLayout({
               type="button"
               onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
-              className="flex size-10 items-center justify-center rounded-lg border border-border/70 text-muted-foreground md:hidden"
+              className="flex size-10 shrink-0 items-center justify-center rounded-lg border border-border/70 text-muted-foreground md:hidden"
             >
               <Menu className="size-5" />
             </button>
           </div>
+
         </div>
 
         {open && (
@@ -95,17 +97,27 @@ export function AppLayout({
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="block rounded-md px-3 py-2.5 text-[15px] font-medium text-muted-foreground"
+            >
+              Sign out
+            </Link>
           </nav>
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
-          {subtitle && <p className="mt-2 text-base text-muted-foreground">{subtitle}</p>}
+      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl font-semibold sm:text-4xl">{title}</h1>
+          {subtitle && (
+            <p className="mt-2 text-sm text-muted-foreground sm:text-base">{subtitle}</p>
+          )}
         </div>
         {children}
       </main>
+
 
       <footer className="mx-auto max-w-6xl px-4 pb-10 text-sm text-muted-foreground sm:px-6">
         Prototype interface with sample data — no submissions are sent to the university.
