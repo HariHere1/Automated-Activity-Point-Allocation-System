@@ -129,7 +129,7 @@ function Dashboard() {
       </div>
 
       <h2 className="mt-8 mb-3 text-sm font-semibold">Category-wise breakdown</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
         {CATEGORIES.map((cat) => {
           const earned = categoryTotals[cat.id] ?? 0;
           const width = Math.min((earned / cat.cap) * 100, 100);
