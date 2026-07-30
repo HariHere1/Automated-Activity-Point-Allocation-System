@@ -97,17 +97,27 @@ export function AppLayout({
                 {item.label}
               </Link>
             ))}
+            <Link
+              to="/login"
+              onClick={() => setOpen(false)}
+              className="block rounded-md px-3 py-2.5 text-[15px] font-medium text-muted-foreground"
+            >
+              Sign out
+            </Link>
           </nav>
         )}
       </header>
 
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
-        <div className="mb-8">
-          <h1 className="text-3xl font-semibold sm:text-4xl">{title}</h1>
-          {subtitle && <p className="mt-2 text-base text-muted-foreground">{subtitle}</p>}
+      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+        <div className="mb-6 sm:mb-8">
+          <h1 className="text-2xl font-semibold sm:text-4xl">{title}</h1>
+          {subtitle && (
+            <p className="mt-2 text-sm text-muted-foreground sm:text-base">{subtitle}</p>
+          )}
         </div>
         {children}
       </main>
+
 
       <footer className="mx-auto max-w-6xl px-4 pb-10 text-sm text-muted-foreground sm:px-6">
         Prototype interface with sample data — no submissions are sent to the university.
