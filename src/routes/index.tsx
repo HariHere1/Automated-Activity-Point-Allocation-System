@@ -68,8 +68,11 @@ function Dashboard() {
       title={`Hello, ${STUDENT.name.split(" ")[0]}`}
       subtitle={`Year ${year} · ${STUDENT.branch} · Batch ${STUDENT.batch}`}
     >
+      <div className="grid items-start gap-6 xl:grid-cols-[minmax(0,1fr)_330px]">
+        <div className="min-w-0">
       <div className="grid gap-5 lg:grid-cols-[1.1fr_1fr]">
         <GlassCard className="flex flex-col gap-6 sm:flex-row sm:items-center">
+
           <ProgressRing value={pct} earned={earnedPoints} />
           <div className="space-y-3">
             <p className="text-lg font-semibold">
