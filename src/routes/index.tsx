@@ -232,7 +232,14 @@ function Dashboard() {
           )}
         </GlassCard>
       </div>
+        </div>
+
+        <div className="min-w-0 xl:sticky xl:top-24">
+          <EventsPanel />
+        </div>
+      </div>
     </AppLayout>
+
   );
 }
 
