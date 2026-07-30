@@ -119,7 +119,7 @@ export function AppLayout({
       </main>
 
 
-      <footer className="mx-auto max-w-6xl px-4 pb-10 text-sm text-muted-foreground sm:px-6">
+      <footer className="mx-auto w-full max-w-[1720px] px-4 pb-10 text-sm text-muted-foreground sm:px-8 lg:px-12">
         Prototype interface with sample data — no submissions are sent to the university.
       </footer>
     </div>
