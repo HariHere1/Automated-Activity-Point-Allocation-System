@@ -12,7 +12,9 @@ import {
   FileText,
 } from "lucide-react";
 import { AppLayout, GlassCard } from "@/components/AppLayout";
+import { EventsPanel } from "@/components/EventsPanel";
 import { StatusBadge } from "@/components/StatusBadge";
+
 import { usePortal } from "@/lib/portal-store";
 import { cn } from "@/lib/utils";
 import {
