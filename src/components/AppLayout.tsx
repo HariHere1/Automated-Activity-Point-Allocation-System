@@ -28,18 +28,19 @@ export function AppLayout({
   return (
     <div className="min-h-screen page-wash">
       <header className="sticky top-0 z-30 glass-soft">
-        <div className="mx-auto flex min-h-[72px] max-w-6xl items-center gap-5 px-4 py-4 sm:px-6">
-          <Link to="/" className="flex items-center gap-3">
-            <span className="flex size-11 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm">
+        <div className="mx-auto flex min-h-[64px] max-w-6xl items-center gap-3 px-4 py-3 sm:min-h-[72px] sm:gap-5 sm:px-6 sm:py-4">
+          <Link to="/" className="flex min-w-0 items-center gap-2.5 sm:gap-3">
+            <span className="flex size-9 shrink-0 items-center justify-center rounded-xl bg-primary text-primary-foreground shadow-sm sm:size-11">
               <GraduationCap className="size-5" />
             </span>
-            <span className="font-display text-lg font-semibold leading-tight tracking-tight">
-              Activity Points
-              <span className="block text-xs font-medium text-muted-foreground">
+            <span className="min-w-0 font-display text-base font-semibold leading-tight tracking-tight sm:text-lg">
+              <span className="block truncate">Activity Points</span>
+              <span className="block truncate text-xs font-medium text-muted-foreground">
                 KTU · {STUDENT.rollNo}
               </span>
             </span>
           </Link>
+
 
           <nav className="ml-8 hidden items-center gap-1 md:flex">
             {NAV.map((item) => (
