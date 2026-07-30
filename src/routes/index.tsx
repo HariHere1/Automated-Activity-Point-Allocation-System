@@ -70,7 +70,7 @@ function Dashboard() {
       title={`Hello, ${STUDENT.name.split(" ")[0]}`}
       subtitle={`Year ${year} · ${STUDENT.branch} · Batch ${STUDENT.batch}`}
     >
-      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 xl:grid-cols-[minmax(0,1fr)_330px]">
+      <div className="grid grid-cols-[minmax(0,1fr)] items-start gap-6 xl:grid-cols-[minmax(0,1fr)_340px] 2xl:grid-cols-[minmax(0,1fr)_400px]">
         <div className="min-w-0">
       <div className="grid grid-cols-[minmax(0,1fr)] gap-5 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,1fr)]">
         <GlassCard className="flex flex-col gap-6 sm:flex-row sm:items-center">
@@ -129,7 +129,7 @@ function Dashboard() {
       </div>
 
       <h2 className="mt-8 mb-3 text-sm font-semibold">Category-wise breakdown</h2>
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-3">
         {CATEGORIES.map((cat) => {
           const earned = categoryTotals[cat.id] ?? 0;
           const width = Math.min((earned / cat.cap) * 100, 100);
