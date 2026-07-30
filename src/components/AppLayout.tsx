@@ -108,7 +108,7 @@ export function AppLayout({
         )}
       </header>
 
-      <main className="mx-auto w-full max-w-6xl px-4 py-6 sm:px-6 sm:py-8">
+      <main className="mx-auto w-full max-w-[1720px] px-4 py-6 sm:px-8 sm:py-8 lg:px-12">
         <div className="mb-6 sm:mb-8">
           <h1 className="text-2xl font-semibold sm:text-4xl">{title}</h1>
           {subtitle && (
