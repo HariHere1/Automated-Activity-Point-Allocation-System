@@ -18,7 +18,7 @@ const EVENTS: DeptEvent[] = [
     title: "InnovateCSE 24-hour Hackathon",
     image: hackathon,
     date: "12 Aug 2026",
-    venue: "Main Computer Lab",
+    venue: "Dept. Computer Lab",
     points: "Up to 20 pts",
   },
   {
@@ -26,7 +26,7 @@ const EVENTS: DeptEvent[] = [
     title: "National Seminar on Embedded AI",
     image: seminar,
     date: "26 Aug 2026",
-    venue: "Golden Jubilee Auditorium",
+    venue: "Seminar Hall",
     points: "Up to 10 pts",
   },
   {
@@ -34,7 +34,7 @@ const EVENTS: DeptEvent[] = [
     title: "Department Project & Robotics Expo",
     image: expo,
     date: "09 Sep 2026",
-    venue: "Academic Block Atrium",
+    venue: "St.Francis Auditorum",
     points: "Up to 15 pts",
   },
 ];
